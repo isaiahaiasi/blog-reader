@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "rootDir": "./src/",
+    "outDir": "./public/",
+    "noImplicitAny": true,
+    "module": "ES6",
+    "target": "ES5",
+    "jsx": "react",
+    "allowJs": false,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "allowSyntheticDefaultImports": true,
+  }
+}

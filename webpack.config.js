@@ -1,38 +1,44 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const path = require('path');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
 
 module.exports = {
-  entry: './src/index.tsx',
-  devtool: 'inline-source-map',
-  target: 'node',
-  mode: 'production',
+  entry: "./src/index.tsx",
+  devtool: "inline-source-map",
+  target: "node",
+  mode: "production",
   module: {
     rules: [
       {
         test: /\.tsx?$/,
-        use: [{
-          loader: 'babel-loader',
-          options: {
-            cacheDirectory: true,
-            presets: [['@babel/preset-env', {targets: {node: "8"}}]]
+        use: [
+          {
+            loader: "babel-loader",
+            options: {
+              cacheDirectory: true,
+              presets: [["@babel/preset-env", { targets: { node: "8" } }]],
+            },
           },
-        },
-        "ts-loader",
-      ]
+          "ts-loader",
+        ],
       },
-    ]
+      {
+        test: /\.css$/i,
+        include: path.resolve(__dirname, "src"),
+        use: ["style-loader", "css-loader", "postcss-loader"],
+      },
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'public/index.html'),
-      filename:'index.html'
-    })
+      template: path.resolve(__dirname, "public/index.html"),
+      filename: "index.html",
+    }),
   ],
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: [".tsx", ".ts", ".js"],
   },
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'public'),
+    filename: "bundle.js",
+    path: path.resolve(__dirname, "public"),
   },
 };

@@ -9,6 +9,6 @@
     "allowJs": false,
     "moduleResolution": "node",
     "sourceMap": true,
-    "allowSyntheticDefaultImports": true,
+    "allowSyntheticDefaultImports": true // was getting weird errors importing react w/o this
   }
 }

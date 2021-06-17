@@ -1,14 +1,14 @@
 import React, { FC } from "react";
+import Header from "./Header";
+
+import "../styles/header.css";
 
 const LandingPage: FC = () => {
   return (
-    <>
-      <header className="pt-4 pb-4">
-        <h1 className="pt-2 pb-2 text-4xl">Blogstream</h1>
-        <h2 className="italic">Coming soon!</h2>
-      </header>
+    <div className="max-w-prose">
+      <Header text="Blogstream" />
       <div>Welcome to my landing page!</div>
-    </>
+    </div>
   );
 };
 

@@ -1,7 +1,18 @@
 import React, { FC } from "react";
 
-const App: FC = () => {
-  return <div className="text-xl text-blue-600">Hello from React!</div>;
-};
+import Nav from "./components/Nav";
+import Footer from "./components/Footer";
+import Main from "./components/Main";
+import LandingPage from "./components/LandingPage";
+
+const App: FC = () => (
+  <div className="text-xl">
+    <Nav />
+    <Main>
+      <LandingPage />
+    </Main>
+    <Footer />
+  </div>
+);
 
 export default App;

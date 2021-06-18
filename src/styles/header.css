@@ -12,12 +12,15 @@
 }
 
 .header-main > .header-stroke {
+  --h-offset-x: 0.1em;
+  --h-offset-y: 0.05em;
+  --h-rotation: 1deg;
   position: absolute;
-  top: 0.2em;
-  left: 0.05em;
+  top: var(--h-offset-y);
+  left: var(--h-offset-x);
   color: red;
   font-size: 1em;
   mix-blend-mode: multiply;
-  opacity: 0.75;
-  transform: rotate(1deg);
+  opacity: 0.6;
+  transform: rotate(var(--h-rotation));
 }

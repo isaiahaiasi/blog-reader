@@ -30,6 +30,7 @@ module.exports = {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: "asset/resource",
       },
+      // this one might not be necessary
       {
         test: /\.svg$/i,
         type: "svg-url-loader",
@@ -38,8 +39,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, "public/index.html"),
-      filename: "index.html",
+      template: path.resolve(__dirname, "src/index.html"),
+      // filename: "index.html",
     }),
   ],
   resolve: {

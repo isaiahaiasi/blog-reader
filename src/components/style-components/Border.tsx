@@ -23,7 +23,7 @@ const Border = ({ clean }: BorderProps) => {
   return (
     <div
       className={
-        "absolute inset-0 m-4 border-2 rounded-md border-solid border-red-500 transform " +
+        "absolute inset-0 m-4 border-2 rounded-md border-solid border-red-500 pointer-events-none transform " +
         rotationClass
       }
     />

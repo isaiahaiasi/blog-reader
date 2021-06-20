@@ -17,7 +17,10 @@ interface HeaderProps {
 // TODO: either find a way to avoid instantiating several copies of SvgFilter
 // TODO: or pass in an id to reference
 // (currently, multiple copies of svgFilter are being instantiated w same id)
-const Header = ({ text, strokeOffset }: HeaderProps) => {
+const Header = ({
+  text,
+  strokeOffset = { x: 3, y: 10, unit: "px", rotation: 0.2 },
+}: HeaderProps) => {
   const strokeStyle = {
     "--h-offset-x": strokeOffset.x + strokeOffset.unit,
     "--h-offset-y": strokeOffset.y + strokeOffset.unit,

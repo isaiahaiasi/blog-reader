@@ -1,6 +1,8 @@
-import React, { FormEvent } from "react";
+import React, { ChangeEventHandler, FormEvent, useState } from "react";
 import Header from "./style-components/Header";
 import SectionContainer from "./style-components/SectionContainer";
+import Input from "./style-components/Input";
+import Button from "./style-components/Button";
 
 // TODO: extract input group into style component
 // TODO: create button style component
@@ -11,6 +13,9 @@ import SectionContainer from "./style-components/SectionContainer";
 // (just want to implement it by hand to learn it)
 
 const LoginPage = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
   const handleFormSubmit = (e: FormEvent) => {
     e.preventDefault();
     console.log(e);
@@ -20,15 +25,25 @@ const LoginPage = () => {
     <SectionContainer>
       <Header text="Log in" />
       <form onSubmit={handleFormSubmit}>
-        <div>
-          <label htmlFor="username">Username:</label>
-          <input type="text" id="username" name="username" />
-        </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input type="password" id="password" name="password" />
-        </div>
-        <button type="submit">Log in</button>
+        <Input
+          type="text"
+          label="Username:"
+          value={username}
+          name="username"
+          onChange={(e) => {
+            setUsername(e.target.value);
+          }}
+        />
+        <Input
+          type="password"
+          label="Password:"
+          value={password}
+          name="password"
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
+        />
+        <Button type="submit">Log in</Button>
       </form>
     </SectionContainer>
   );

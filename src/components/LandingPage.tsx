@@ -1,13 +1,15 @@
 import React, { FC } from "react";
 import Header from "./style-components/Header";
 
-import "../styles/header.css";
 import SectionContainer from "./style-components/SectionContainer";
+import BlogFeed from "./BlogFeed";
+
+import "../styles/header.css";
 
 const LandingPage: FC = () => {
   return (
     <div className="max-w-prose">
-      {[
+      {/* {[
         "Welcome to my landing page",
         "Section 2",
         "This is like a post",
@@ -21,7 +23,8 @@ const LandingPage: FC = () => {
           />
           <div>Welcome to my landing page!</div>
         </SectionContainer>
-      ))}
+      ))} */}
+      <BlogFeed />
     </div>
   );
 };

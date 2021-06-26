@@ -8,8 +8,8 @@ const Nav = ({ navItems }: NavProps) => {
   return (
     <nav>
       <ul className="p-2 flex justify-between">
-        {navItems.map((navItem) => (
-          <li> {navItem} </li>
+        {navItems.map((navItem, i) => (
+          <li key={i}> {navItem} </li>
         ))}
       </ul>
     </nav>

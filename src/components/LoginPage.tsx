@@ -3,10 +3,8 @@ import Header from "./style-components/Header";
 import SectionContainer from "./style-components/SectionContainer";
 import Input from "./style-components/Input";
 import Button from "./style-components/Button";
+import useFetch from "use-http";
 
-// TODO: extract input group into style component
-// TODO: create button style component
-// TODO: make inputs controlled
 // TODO: use fetch API in useEffect to send form data to backend
 // TODO: extract fetch to useFetch hook
 // TODO: replace useFetch hook with a proper package
@@ -15,10 +13,20 @@ import Button from "./style-components/Button";
 const LoginPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [res, setResponse] = useState(null);
+  const [error, setError] = useState(null);
 
-  const handleFormSubmit = (e: FormEvent) => {
+  const { post, response } = useFetch("http://localhost:3000/api/auth/login");
+
+  const handleFormSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log(e);
+    const body = { username, password };
+    const postResponse = await post(body).catch(setResponse);
+    if (!response.ok) {
+      setError(postResponse);
+    } else {
+      setResponse(postResponse);
+    }
   };
 
   return (
@@ -45,6 +53,13 @@ const LoginPage = () => {
         />
         <Button type="submit">Log in</Button>
       </form>
+      <div>
+        {error && <p>{error.message}</p>}
+        <h2>Response</h2>
+        {!res
+          ? "no response yet..."
+          : res.user?.username ?? "malformed response"}
+      </div>
     </SectionContainer>
   );
 };

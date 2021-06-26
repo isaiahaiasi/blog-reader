@@ -1,21 +1,18 @@
-import React, { FC } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 
-const Nav: FC = () => {
+interface NavProps {
+  navItems: JSX.Element[];
+}
+
+const Nav = ({ navItems }: NavProps) => {
   return (
-    <div>
+    <nav>
       <ul className="p-2 flex justify-between">
-        <li>
-          <Link to="/stream">My Stream</Link>
-        </li>
-        <li>
-          <Link to="/discover">Discover</Link>
-        </li>
-        <li>
-          <Link to="/login">Log in</Link>
-        </li>
+        {navItems.map((navItem) => (
+          <li> {navItem} </li>
+        ))}
       </ul>
-    </div>
+    </nav>
   );
 };
 

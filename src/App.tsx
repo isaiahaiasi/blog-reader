@@ -1,29 +1,14 @@
-import React, { FC } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import React, { FC, useState } from "react";
+import RouterLoggedIn from "./components/RouterLoggedIn";
+import RouterLoggedOut from "./components/RouterLoggedOut";
 
-import Nav from "./components/Nav";
-import Footer from "./components/Footer";
-import Main from "./components/style-components/Main";
-import LandingPage from "./components/LandingPage";
-import LoginPage from "./components/LoginPage";
-
-const App: FC = () => (
-  <div className="text-xl text-gray-900">
-    <Router>
-      <Nav />
-      <Main>
-        <Switch>
-          <Route path="/discover">
-            <LandingPage />
-          </Route>
-          <Route path="/login">
-            <LoginPage />
-          </Route>
-        </Switch>
-      </Main>
-      <Footer />
-    </Router>
-  </div>
-);
+const App: FC = () => {
+  const [user, setUser] = useState(null);
+  return (
+    <div className="text-xl text-gray-900">
+      {user ? <RouterLoggedIn /> : <RouterLoggedOut />}
+    </div>
+  );
+};
 
 export default App;

@@ -4,14 +4,11 @@
 
 import React, { FC } from "react";
 import useFetch from "use-http";
+import { BLOG_ROUTE } from "../utils/apiRoutes";
 import BlogPost from "./BlogPost";
 
 const BlogFeed: FC = () => {
-  const { data, error, loading } = useFetch(
-    "http://localhost:3000/api/blog",
-    {},
-    []
-  );
+  const { data, error, loading } = useFetch(BLOG_ROUTE, {}, []);
   return (
     <>
       {error && <p> {JSON.stringify(error)} </p>}

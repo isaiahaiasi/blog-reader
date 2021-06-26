@@ -1,4 +1,6 @@
 import React, { FormEvent, useState } from "react";
+import useFetch from "use-http";
+import { REGISTER_ROUTE } from "../utils/apiRoutes";
 import Button from "./style-components/Button";
 import Header from "./style-components/Header";
 import Input from "./style-components/Input";
@@ -9,11 +11,25 @@ const RegistrationPage = () => {
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
 
-  const handleFormSubmit = (e: FormEvent) => {};
+  const { post, response } = useFetch(REGISTER_ROUTE);
+
+  const handleFormSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    const body = { username, password, passwordConfirm };
+    const postResponse = await post(body);
+
+    if (!response.ok) {
+      console.log("uh oh!");
+      // TODO: render errors
+    }
+
+    console.log(postResponse);
+    // TODO: redirect
+  };
 
   return (
     <SectionContainer>
-      <Header text="Log in" />
+      <Header text="Register" />
       <form onSubmit={handleFormSubmit}>
         <Input
           type="text"

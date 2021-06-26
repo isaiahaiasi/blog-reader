@@ -4,6 +4,7 @@ import SectionContainer from "./style-components/SectionContainer";
 import Input from "./style-components/Input";
 import Button from "./style-components/Button";
 import useFetch from "use-http";
+import { LOGIN_ROUTE } from "../utils/apiRoutes";
 
 // TODO: use fetch API in useEffect to send form data to backend
 // TODO: extract fetch to useFetch hook
@@ -16,16 +17,18 @@ const LoginPage = () => {
   const [res, setResponse] = useState(null);
   const [error, setError] = useState(null);
 
-  const { post, response } = useFetch("http://localhost:3000/api/auth/login");
+  const { post, response } = useFetch(LOGIN_ROUTE);
 
   const handleFormSubmit = async (e: FormEvent) => {
     e.preventDefault();
     const body = { username, password };
-    const postResponse = await post(body).catch(setResponse);
+    const postResponse = await post(body).catch(setError);
     if (!response.ok) {
       setError(postResponse);
     } else {
+      setError(null);
       setResponse(postResponse);
+      // TODO: redirect
     }
   };
 

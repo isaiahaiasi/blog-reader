@@ -14,9 +14,8 @@ const BlogFeed: FC = () => {
       {error && <p> {JSON.stringify(error)} </p>}
       {loading && <p>Loading...</p>}
       {data &&
-        (data as Array<any>).map((post, i) => {
-          console.log(post);
-          return <BlogPost post={post} key={i} />;
+        (data as Array<any>).map((post) => {
+          return <BlogPost post={post} key={post._id} />;
         })}
     </>
   );

@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, FormEvent, useState } from "react";
+import React, { FormEvent, useState } from "react";
 import Header from "./style-components/Header";
 import SectionContainer from "./style-components/SectionContainer";
 import Input from "./style-components/Input";

@@ -5,8 +5,8 @@ import Nav from "./Nav";
 import Footer from "./Footer";
 import Main from "./style-components/Main";
 import LoginPage from "./LoginPage";
-import BlogFeed from "./BlogFeed";
 import RegistrationPage from "./RegistrationPage";
+import LandingPage from "./LandingPage";
 
 const RouterLoggedOut: FC = () => {
   return (
@@ -27,7 +27,7 @@ const RouterLoggedOut: FC = () => {
             <RegistrationPage />
           </Route>
           <Route path="/discover">
-            <BlogFeed />
+            <LandingPage />
           </Route>
         </Switch>
       </Main>

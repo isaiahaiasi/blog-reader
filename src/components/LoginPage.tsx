@@ -1,10 +1,11 @@
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useContext, useEffect, useState } from "react";
 import Header from "./style-components/Header";
 import SectionContainer from "./style-components/SectionContainer";
 import Input from "./style-components/Input";
 import Button from "./style-components/Button";
 import useFetch from "use-http";
 import { LOGIN_ROUTE } from "../utils/apiRoutes";
+import { UserContext } from "../App";
 
 // TODO: use fetch API in useEffect to send form data to backend
 // TODO: extract fetch to useFetch hook
@@ -15,19 +16,22 @@ const LoginPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [res, setResponse] = useState(null);
-  const [error, setError] = useState(null);
 
-  const { post, response } = useFetch(LOGIN_ROUTE);
+  const { post, response, error } = useFetch(LOGIN_ROUTE);
+  const [, setUserToken] = useContext(UserContext);
 
   const handleFormSubmit = async (e: FormEvent) => {
     e.preventDefault();
+
     const body = { username, password };
-    const postResponse = await post(body).catch(setError);
-    if (!response.ok) {
-      setError(postResponse);
-    } else {
-      setError(null);
-      setResponse(postResponse);
+
+    const postResult = await post(body);
+
+    if (response.ok) {
+      if (postResult?.token) {
+        setResponse(postResult);
+        setUserToken(postResult.token);
+      }
       // TODO: redirect
     }
   };

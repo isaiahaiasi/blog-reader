@@ -1,17 +1,13 @@
 import React, { FC, useEffect, useState } from "react";
-import RouterLoggedIn from "./components/RouterLoggedIn";
-import RouterLoggedOut from "./components/RouterLoggedOut";
+import BlogRouter from "./components/BlogRouter";
 
 export const UserContext = React.createContext(null);
 
 const TOKEN_KEY = "USER_TOKEN";
-
-// TODO: make this a tad more secure!
 const storeToken = (token: string, tokenKey: string): void => {
-  console.log(token, "storing token...");
   if (token) {
     localStorage.setItem(tokenKey, token);
-    console.log("saved!");
+    console.log(token);
   }
 };
 
@@ -25,7 +21,7 @@ const App: FC = () => {
   return (
     <UserContext.Provider value={[userToken, setUserToken]}>
       <div className="text-xl text-gray-900">
-        {userToken ? <RouterLoggedIn /> : <RouterLoggedOut />}
+        <BlogRouter />
       </div>
     </UserContext.Provider>
   );

@@ -1,4 +1,4 @@
-import React, { FormEvent, useContext, useEffect, useState } from "react";
+import React, { FormEvent, useContext, useState } from "react";
 import Header from "./style-components/Header";
 import SectionContainer from "./style-components/SectionContainer";
 import Input from "./style-components/Input";
@@ -6,19 +6,18 @@ import Button from "./style-components/Button";
 import useFetch from "use-http";
 import { LOGIN_ROUTE } from "../utils/apiRoutes";
 import { UserContext } from "../App";
+import { Redirect, useHistory } from "react-router-dom";
 
-// TODO: use fetch API in useEffect to send form data to backend
-// TODO: extract fetch to useFetch hook
-// TODO: replace useFetch hook with a proper package
-// (just want to implement it by hand to learn it)
+// TODO: separate logic from JSX?
 
 const LoginPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [res, setResponse] = useState(null);
 
   const { post, response, error } = useFetch(LOGIN_ROUTE);
   const [, setUserToken] = useContext(UserContext);
+
+  const history = useHistory();
 
   const handleFormSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -27,12 +26,12 @@ const LoginPage = () => {
 
     const postResult = await post(body);
 
-    if (response.ok) {
-      if (postResult?.token) {
-        setResponse(postResult);
-        setUserToken(postResult.token);
-      }
-      // TODO: redirect
+    if (response.ok && postResult?.token) {
+      setUserToken(postResult.token);
+      history.push("/discover");
+    } else {
+      setUsername("");
+      setPassword("");
     }
   };
 
@@ -60,13 +59,7 @@ const LoginPage = () => {
         />
         <Button type="submit">Log in</Button>
       </form>
-      <div>
-        {error && <p>{error.message}</p>}
-        <h2>Response</h2>
-        {!res
-          ? "no response yet..."
-          : res.user?.username ?? "malformed response"}
-      </div>
+      <div>{error && <p>{error.message}</p>}</div>
     </SectionContainer>
   );
 };

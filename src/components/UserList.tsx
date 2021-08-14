@@ -6,8 +6,8 @@ import Header from "./style-components/Header";
 import SectionContainer from "./style-components/SectionContainer";
 import UserCard from "./style-components/UserCard";
 
-const UserFeed = () => {
-  const [userToken] = useContext(UserContext);
+const UserList = () => {
+  const [user] = useContext(UserContext);
 
   const {
     loading,
@@ -15,7 +15,7 @@ const UserFeed = () => {
     data: users,
   } = useFetch(
     USER_ROUTE,
-    { headers: { Authorization: `Bearer ${userToken}` } },
+    user?.token ? { headers: { Authorization: `Bearer ${user.token}` } } : {},
     []
   );
 
@@ -34,4 +34,4 @@ const UserFeed = () => {
   );
 };
 
-export default UserFeed;
+export default UserList;

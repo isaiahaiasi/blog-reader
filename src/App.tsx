@@ -3,23 +3,17 @@ import BlogRouter from "./components/BlogRouter";
 
 export const UserContext = React.createContext(null);
 
-const TOKEN_KEY = "USER_TOKEN";
-const storeToken = (token: string, tokenKey: string): void => {
-  if (token) {
-    localStorage.setItem(tokenKey, token);
-    console.log(token);
-  }
-};
+const USER_KEY = "USER_INFO";
 
 const App: FC = () => {
-  const [userToken, setUserToken] = useState(localStorage.getItem(TOKEN_KEY));
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem(USER_KEY)));
 
   useEffect(() => {
-    storeToken(userToken, TOKEN_KEY);
-  }, [userToken]);
+    localStorage.setItem(USER_KEY, JSON.stringify(user));
+  }, [user]);
 
   return (
-    <UserContext.Provider value={[userToken, setUserToken]}>
+    <UserContext.Provider value={[user, setUser]}>
       <div className="text-xl text-gray-900">
         <BlogRouter />
       </div>

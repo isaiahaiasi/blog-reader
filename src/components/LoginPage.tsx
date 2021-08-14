@@ -15,7 +15,7 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
 
   const { post, response, error } = useFetch(LOGIN_ROUTE);
-  const [, setUserToken] = useContext(UserContext);
+  const [, setUser] = useContext(UserContext);
 
   const history = useHistory();
 
@@ -27,7 +27,7 @@ const LoginPage = () => {
     const postResult = await post(body);
 
     if (response.ok && postResult?.token) {
-      setUserToken(postResult.token);
+      setUser(postResult);
       history.push("/discover");
     } else {
       setUsername("");

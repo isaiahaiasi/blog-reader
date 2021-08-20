@@ -2,18 +2,33 @@
 // TODO: not how to generalize this... pass in api url as prop?
 // TODO: confirm
 
-import React, { FC } from "react";
+import React, { FC, useContext } from "react";
 import useFetch from "use-http";
-import { BLOG_ROUTE } from "../utils/apiRoutes";
+import { UserContext } from "../App";
 import BlogPost from "./BlogPost";
 
-const BlogFeed: FC = () => {
-  const { data, error, loading } = useFetch(BLOG_ROUTE, {}, []);
+interface BlogFeedProps {
+  blogQuery: string;
+}
+
+const BlogFeed = ({ blogQuery }: BlogFeedProps) => {
+  const [userData] = useContext(UserContext);
+
+  const { loading, error, data } = useFetch(
+    blogQuery,
+    userData?.token
+      ? { headers: { Authorization: `Bearer ${userData.token}` } }
+      : {},
+    []
+  );
+
+  console.log(data);
   return (
     <>
       {error && <p> {JSON.stringify(error)} </p>}
       {loading && <p>Loading...</p>}
       {data &&
+        Array.isArray(data) &&
         (data as Array<any>).map((post) => {
           return <BlogPost post={post} key={post._id} />;
         })}

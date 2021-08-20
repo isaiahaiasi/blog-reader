@@ -7,16 +7,17 @@ import Main from "./style-components/Main";
 import LoginPage from "./LoginPage";
 import RegistrationPage from "./RegistrationPage";
 import { UserContext } from "../App";
-import LandingPage from "./LandingPage";
+import LandingPage from "./Discover";
+import MyBlog from "./MyBlog";
 
 const RouterLoggedOut: FC = () => {
-  const [userToken] = useContext(UserContext);
+  const [user] = useContext(UserContext);
   return (
     <Router>
-      {userToken ? (
+      {user ? (
         <Nav
           navItems={[
-            <Link to="/stream">My Stream</Link>,
+            <Link to="/myblog">My Blog</Link>,
             <Link to="/discover">Discover</Link>,
             <Link to="/logout">Logout</Link>,
           ]}
@@ -40,6 +41,9 @@ const RouterLoggedOut: FC = () => {
           </Route>
           <Route path="/discover">
             <LandingPage />
+          </Route>
+          <Route path="/myblog">
+            <MyBlog />
           </Route>
           <Route path="/logout">
             <LoginPage />

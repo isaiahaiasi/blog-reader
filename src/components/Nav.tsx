@@ -6,10 +6,12 @@ interface NavProps {
 
 const Nav = ({ navItems }: NavProps) => {
   return (
-    <nav>
-      <ul className="p-2 flex justify-between">
+    <nav className="flex w-full justify-center mt-4 mb-4">
+      <ul className="p-4 flex justify-around bg-white bg-opacity-90 max-w-prose w-full rounded-md">
         {navItems.map((navItem, i) => (
-          <li key={i}> {navItem} </li>
+          <li key={i} className="header text-2xl">
+            {navItem}
+          </li>
         ))}
       </ul>
     </nav>

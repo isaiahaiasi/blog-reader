@@ -4,6 +4,7 @@ import { UserContext } from "../App";
 import { USER_ROUTE } from "../utils/apiRoutes";
 import Header from "./style-components/Header";
 import SectionContainer from "./style-components/SectionContainer";
+import SectionContent from "./style-components/SectionContent";
 import UserCard from "./style-components/UserCard";
 
 // ! TEMP
@@ -29,10 +30,10 @@ const UserVerifiedCard = () => {
     <SectionContainer>
       <Header text="Verified User:" />
       {userData?.user && (
-        <p>
+        <SectionContent>
           If {userData.user.username} is verified, their user card will appear
           below:
-        </p>
+        </SectionContent>
       )}
       {loading && <p>Loading user list...</p>}
       {error && (
@@ -41,11 +42,7 @@ const UserVerifiedCard = () => {
           <p>ERROR MESSAGE: {JSON.stringify(user)}</p>
         </>
       )}
-      {user && (
-        <div className="flex flex-col gap-2 p-2">
-          <UserCard user={user} key={user._id} />
-        </div>
-      )}
+      {user && <UserCard user={user} key={user._id} />}
     </SectionContainer>
   );
 };

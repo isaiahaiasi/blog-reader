@@ -3,10 +3,10 @@
 .header {
   font-family: "Nunito", sans-serif;
   position: relative;
+  color: rgb(30 144 255 / 0.95);
 }
 
 .header > .header-main {
-  color: rgb(30 144 255 / 0.95);
   position: relative;
   mix-blend-mode: multiply;
 }

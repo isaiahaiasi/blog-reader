@@ -1,0 +1,15 @@
+.gradient-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background: rgb(30, 144, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(30, 144, 255, 1) 0%,
+    rgba(187, 247, 255, 1) 100%
+  );
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+}

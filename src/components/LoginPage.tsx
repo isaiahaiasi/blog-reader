@@ -6,7 +6,7 @@ import Button from "./style-components/Button";
 import useFetch from "use-http";
 import { LOGIN_ROUTE } from "../utils/apiRoutes";
 import { UserContext } from "../App";
-import { Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 // TODO: separate logic from JSX?
 

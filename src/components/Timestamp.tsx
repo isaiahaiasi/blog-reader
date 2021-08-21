@@ -3,7 +3,7 @@ import React from "react";
 
 interface TimestampProps {
   date: string;
-  className: string;
+  className?: string;
 }
 // TODO: allow Date object as well
 const Timestamp = ({ date, className }: TimestampProps) => {

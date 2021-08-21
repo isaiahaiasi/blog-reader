@@ -11,5 +11,5 @@
     "sourceMap": true,
     "allowSyntheticDefaultImports": true // was getting weird errors importing react w/o this
   },
-  "include": ["src/**/*.d.ts"]
+  "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.tsx"]
 }

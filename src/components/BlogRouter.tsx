@@ -9,6 +9,8 @@ import RegistrationPage from "./RegistrationPage";
 import UserContext from "../contexts/UserContext";
 import DiscoverFeed from "./DiscoverFeed";
 import MyBlog from "./MyBlog";
+import { ROUTER_USER_FEED_BASE } from "../utils/routes";
+import UserFeed from "./UserFeed";
 
 const RouterLoggedOut: FC = () => {
   const [user] = useContext(UserContext);
@@ -47,6 +49,9 @@ const RouterLoggedOut: FC = () => {
           </Route>
           <Route path="/logout">
             <LoginPage />
+          </Route>
+          <Route path={`${ROUTER_USER_FEED_BASE}/:userid`}>
+            <UserFeed />
           </Route>
         </Switch>
       </Main>

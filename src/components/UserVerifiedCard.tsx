@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import useFetch from "use-http";
 import UserContext from "../contexts/UserContext";
-import { USER_ROUTE } from "../utils/apiRoutes";
+import { API_USER } from "../utils/routes";
 import Header from "./style-components/Header";
 import SectionContainer from "./style-components/SectionContainer";
 import SectionContent from "./style-components/SectionContent";
@@ -19,7 +19,7 @@ const UserVerifiedCard = () => {
     error,
     data: user,
   } = useFetch(
-    `${USER_ROUTE}/${userData?.user._id}`,
+    `${API_USER}/${userData?.user._id}`,
     userData?.token
       ? { headers: { Authorization: `Bearer ${userData.token}` } }
       : {},

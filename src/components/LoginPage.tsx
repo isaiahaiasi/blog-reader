@@ -1,7 +1,7 @@
 import React, { FormEvent, useContext, useState } from "react";
 import useFetch from "use-http";
 import { useHistory } from "react-router-dom";
-import { LOGIN_ROUTE } from "../utils/apiRoutes";
+import { API_LOGIN } from "../utils/routes";
 import UserContext from "../contexts/UserContext";
 import Header from "./style-components/Header";
 import SectionContainer from "./style-components/SectionContainer";
@@ -14,7 +14,7 @@ const LoginPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const { post, response, error } = useFetch(LOGIN_ROUTE);
+  const { post, response, error } = useFetch(API_LOGIN);
   const [, setUser] = useContext(UserContext);
 
   const history = useHistory();

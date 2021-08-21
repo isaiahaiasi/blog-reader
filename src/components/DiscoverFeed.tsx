@@ -3,11 +3,11 @@ import React, { FC } from "react";
 
 import BlogFeed from "./BlogFeed";
 
-import { BLOG_ROUTE } from "../utils/apiRoutes";
+import { API_BLOGPOST } from "../utils/routes";
 
 const DiscoverFeed: FC = () => (
   <div className="max-w-prose w-full">
-    <BlogFeed blogQuery={BLOG_ROUTE} />
+    <BlogFeed blogQuery={API_BLOGPOST} />
   </div>
 );
 

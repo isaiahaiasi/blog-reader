@@ -1,6 +1,6 @@
 import React, { FormEvent, useState } from "react";
 import useFetch from "use-http";
-import { REGISTER_ROUTE } from "../utils/apiRoutes";
+import { API_REGISTER } from "../utils/routes";
 import Button from "./style-components/Button";
 import Header from "./style-components/Header";
 import Input from "./style-components/Input";
@@ -11,7 +11,7 @@ const RegistrationPage = () => {
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
 
-  const { post, response } = useFetch(REGISTER_ROUTE);
+  const { post, response } = useFetch(API_REGISTER);
 
   const handleFormSubmit = async (e: FormEvent) => {
     e.preventDefault();

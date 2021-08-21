@@ -1,15 +1,15 @@
 import React from "react";
-import { Author } from "../dataInterfaces";
+import { User } from "../dataInterfaces";
 
 // for now, just show username
 // TODO: link to author's blogfeed
 
 interface AuthorTagProps {
-  author: Author;
+  author: User;
   className?: string;
 }
-const AuthorTag = ({ author }: AuthorTagProps) => {
-  return <div className={"author-tag"}>by {author.username}</div>;
-};
+const AuthorTag = ({ author, className }: AuthorTagProps) => (
+  <div className={`author-tag ${className}`}>by {author.username}</div>
+);
 
 export default AuthorTag;

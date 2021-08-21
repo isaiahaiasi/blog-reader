@@ -1,7 +1,6 @@
 import React, { FC, useEffect, useState } from "react";
 import BlogRouter from "./components/BlogRouter";
-
-export const UserContext = React.createContext(null);
+import UserContext from "./contexts/UserContext";
 
 const USER_KEY = "USER_INFO";
 

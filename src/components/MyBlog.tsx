@@ -1,5 +1,5 @@
 import React, { FC, useContext } from "react";
-import { UserContext } from "../App";
+import UserContext from "../contexts/UserContext";
 import { getUserBlog } from "../utils/apiRoutes";
 import BlogFeed from "./BlogFeed";
 import Header from "./style-components/Header";

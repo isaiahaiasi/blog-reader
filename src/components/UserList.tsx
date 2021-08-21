@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import useFetch from "use-http";
-import { UserContext } from "../App";
+import UserContext from "../contexts/UserContext";
 import { USER_ROUTE } from "../utils/apiRoutes";
 import Header from "./style-components/Header";
 import SectionContainer from "./style-components/SectionContainer";
@@ -27,7 +27,7 @@ const UserList = () => {
       {users && (
         <div className="flex flex-col gap-2 p-2">
           {typeof users.map !== "undefined" &&
-            users.map((user: any) => <UserCard user={user} key={user._id} />)}
+            users.map((u: any) => <UserCard user={u} key={u._id} />)}
         </div>
       )}
     </SectionContainer>

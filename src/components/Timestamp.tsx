@@ -10,7 +10,7 @@ const Timestamp = ({ date, className }: TimestampProps) => {
   const parsedDate = parseISO(date);
   return (
     <div className={className}>
-      {parsedDate && !isNaN(parsedDate.valueOf())
+      {parsedDate && !Number.isNaN(parsedDate.valueOf())
         ? formatDistance(parsedDate, new Date(), {
             addSuffix: true,
           })

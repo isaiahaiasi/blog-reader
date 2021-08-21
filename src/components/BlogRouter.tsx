@@ -6,8 +6,8 @@ import Footer from "./Footer";
 import Main from "./style-components/Main";
 import LoginPage from "./LoginPage";
 import RegistrationPage from "./RegistrationPage";
-import { UserContext } from "../App";
-import LandingPage from "./Discover";
+import UserContext from "../contexts/UserContext";
+import DiscoverFeed from "./DiscoverFeed";
 import MyBlog from "./MyBlog";
 
 const RouterLoggedOut: FC = () => {
@@ -40,7 +40,7 @@ const RouterLoggedOut: FC = () => {
             <RegistrationPage />
           </Route>
           <Route path="/discover">
-            <LandingPage />
+            <DiscoverFeed />
           </Route>
           <Route path="/myblog">
             <MyBlog />

@@ -1,12 +1,12 @@
 import React, { FormEvent, useContext, useState } from "react";
+import useFetch from "use-http";
+import { useHistory } from "react-router-dom";
+import { LOGIN_ROUTE } from "../utils/apiRoutes";
+import UserContext from "../contexts/UserContext";
 import Header from "./style-components/Header";
 import SectionContainer from "./style-components/SectionContainer";
 import Input from "./style-components/Input";
 import Button from "./style-components/Button";
-import useFetch from "use-http";
-import { LOGIN_ROUTE } from "../utils/apiRoutes";
-import { UserContext } from "../App";
-import { useHistory } from "react-router-dom";
 
 // TODO: separate logic from JSX?
 

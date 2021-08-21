@@ -4,7 +4,7 @@
 
 import React, { useContext } from "react";
 import useFetch from "use-http";
-import { UserContext } from "../App";
+import UserContext from "../contexts/UserContext";
 import BlogPost from "./BlogPost";
 
 interface BlogFeedProps {
@@ -29,9 +29,9 @@ const BlogFeed = ({ blogQuery }: BlogFeedProps) => {
       {loading && <p>Loading...</p>}
       {data &&
         Array.isArray(data) &&
-        (data as Array<any>).map((post) => {
-          return <BlogPost post={post} key={post._id} />;
-        })}
+        (data as Array<any>).map((post) => (
+          <BlogPost post={post} key={post._id} />
+        ))}
     </>
   );
 };

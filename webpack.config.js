@@ -4,7 +4,7 @@ const path = require("path");
 module.exports = {
   entry: "./src/index.tsx",
   devtool: "inline-source-map",
-  target: "node",
+  target: "web",
   mode: "development",
   module: {
     rules: [
@@ -51,7 +51,9 @@ module.exports = {
     path: path.resolve(__dirname, "public"),
   },
   devServer: {
-    publicPath: "/",
     historyApiFallback: true,
+    devMiddleware: {
+      publicPath: "/",
+    },
   },
 };

@@ -2,7 +2,7 @@
 // TODO: not how to generalize this... pass in api url as prop?
 // TODO: confirm
 
-import React, { FC, useContext } from "react";
+import React, { useContext } from "react";
 import useFetch from "use-http";
 import { UserContext } from "../App";
 import BlogPost from "./BlogPost";

@@ -6,7 +6,6 @@ import SectionContainer from "./style-components/SectionContainer";
 import SectionContent from "./style-components/SectionContent";
 import Timestamp from "./Timestamp";
 
-// todo: put this in a more sensible place, or share this between front & backend?...
 export interface PostProps {
   post: Post;
 }

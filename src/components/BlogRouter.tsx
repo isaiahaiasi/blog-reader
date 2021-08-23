@@ -1,18 +1,24 @@
 import React, { FC, useContext } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect,
+} from "react-router-dom";
 
+import { ROUTER_POST, ROUTER_USER_FEED_BASE } from "../utils/routes";
 import Nav from "./Nav";
 import Main from "./style-components/Main";
-import LoginPage from "./LoginPage";
-import RegistrationPage from "./RegistrationPage";
+import LoginPage from "./pages/LoginPage";
+import RegistrationPage from "./pages/RegistrationPage";
 import UserContext from "../contexts/UserContext";
-import DiscoverFeed from "./DiscoverFeed";
-import MyBlog from "./MyBlog";
-import { ROUTER_POST, ROUTER_USER_FEED_BASE } from "../utils/routes";
-import UserFeed from "./UserFeed";
-import FullBlogPost from "./FullBlogPost";
+import DiscoverFeed from "./pages/DiscoverFeed";
+import MyBlog from "./pages/MyBlog";
+import UserFeed from "./pages/UserFeed";
+import FullBlogPost from "./pages/FullBlogPost";
 
-const RouterLoggedOut: FC = () => {
+const BlogRouter: FC = () => {
   const [user] = useContext(UserContext);
   return (
     <Router>
@@ -35,25 +41,29 @@ const RouterLoggedOut: FC = () => {
 
       <Main>
         <Switch>
-          <Route path="/login">
+          <Route exact path="/">
+            {user ? <Redirect to="/discover" /> : <Redirect to="/login" />}
+          </Route>
+          <Route exact path="/login">
             <LoginPage />
           </Route>
-          <Route path="/register">
+          <Route exact path="/register">
             <RegistrationPage />
           </Route>
-          <Route path="/discover">
+          <Route exact path="/discover">
             <DiscoverFeed />
           </Route>
-          <Route path="/myblog">
+          <Route exact path="/myblog">
             <MyBlog />
           </Route>
-          <Route path="/logout">
+          <Route exact path="/logout">
+            {/* TODO: Replace w Logout component (should also redirect) */}
             <LoginPage />
           </Route>
-          <Route path={`${ROUTER_USER_FEED_BASE}/:userid`}>
+          <Route exact path={`${ROUTER_USER_FEED_BASE}/:userid`}>
             <UserFeed />
           </Route>
-          <Route path={`${ROUTER_POST}/:postid`}>
+          <Route exact path={`${ROUTER_POST}/:postid`}>
             <FullBlogPost />
           </Route>
         </Switch>
@@ -63,4 +73,4 @@ const RouterLoggedOut: FC = () => {
   );
 };
 
-export default RouterLoggedOut;
+export default BlogRouter;

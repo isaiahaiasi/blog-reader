@@ -23,9 +23,13 @@ const BlogFeed = ({ blogQuery }: BlogFeedProps) => {
   );
 
   console.log(data);
+
+  // TODO: replace error divs w actual Error component
+  // TODO: replace loading divs w actual Loading component
+
   return (
     <>
-      {error && <p> {JSON.stringify(error)} </p>}
+      {error && <p>Uh-oh! Was not able to load posts!</p>}
       {loading && <p>Loading...</p>}
       {data &&
         Array.isArray(data) &&

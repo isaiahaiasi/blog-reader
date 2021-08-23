@@ -1,9 +1,9 @@
 import React, { FC, useContext } from "react";
-import UserContext from "../contexts/UserContext";
-import { getUserBlog } from "../utils/routes";
-import BlogFeed from "./BlogFeed";
-import Header from "./style-components/Header";
-import SectionContainer from "./style-components/SectionContainer";
+import UserContext from "../../contexts/UserContext";
+import { getUserBlog } from "../../utils/routes";
+import BlogFeed from "../BlogFeed";
+import Header from "../style-components/Header";
+import SectionContainer from "../style-components/SectionContainer";
 
 const MyBlog: FC = () => {
   const [user] = useContext(UserContext);

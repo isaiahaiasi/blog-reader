@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ApiUser } from "../dataInterfaces";
+import { ApiUser } from "../utils/dataInterfaces";
 import { ROUTER_USER_FEED_BASE } from "../utils/routes";
 
 interface AuthorTagProps {

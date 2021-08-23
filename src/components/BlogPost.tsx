@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ApiPost } from "../dataInterfaces";
+import { ApiPost } from "../utils/dataInterfaces";
 import { ROUTER_POST } from "../utils/routes";
 import AuthorTag from "./AuthorTag";
 import Header from "./style-components/Header";

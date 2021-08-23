@@ -1,10 +1,10 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import useFetch from "use-http";
-import { getPost, getPostComments } from "../utils/routes";
-import BlogPost from "./BlogPost";
-import CommentList from "./CommentList";
-import SectionContainer from "./style-components/SectionContainer";
+import { getPost, getPostComments } from "../../utils/routes";
+import BlogPost from "../BlogPost";
+import CommentList from "../CommentList";
+import SectionContainer from "../style-components/SectionContainer";
 
 const FullBlogPost = () => {
   const { postid } = useParams<{ postid: string }>();
@@ -31,12 +31,15 @@ const FullBlogPost = () => {
     return comments.length;
   };
 
+  // TODO: replace error divs w actual Error component
+  // TODO: replace loading divs w actual Loading component
+
   return (
     <div className="w-full max-w-prose">
       <div className="post-container">
         {postError && <div>error loading post!</div>}
         {postLoading && <div>loading post...</div>}
-        {postData && <BlogPost post={postData} />}
+        {postData && !postData.errors && <BlogPost post={postData} />}
       </div>
       <div className="comments-container">
         <SectionContainer>

@@ -1,5 +1,5 @@
 import React from "react";
-import { ApiComment } from "../dataInterfaces";
+import { ApiComment } from "../utils/dataInterfaces";
 import AuthorTag from "./AuthorTag";
 import SectionContainer from "./style-components/SectionContainer";
 import Timestamp from "./Timestamp";

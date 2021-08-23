@@ -1,10 +1,10 @@
 import React, { FormEvent, useState } from "react";
 import useFetch from "use-http";
-import { API_REGISTER } from "../utils/routes";
-import Button from "./style-components/Button";
-import Header from "./style-components/Header";
-import Input from "./style-components/Input";
-import SectionContainer from "./style-components/SectionContainer";
+import { API_REGISTER } from "../../utils/routes";
+import Button from "../style-components/Button";
+import Header from "../style-components/Header";
+import Input from "../style-components/Input";
+import SectionContainer from "../style-components/SectionContainer";
 
 const RegistrationPage = () => {
   const [username, setUsername] = useState("");

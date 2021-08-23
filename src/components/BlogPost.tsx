@@ -1,5 +1,7 @@
 import React from "react";
-import { Post } from "../dataInterfaces";
+import { Link } from "react-router-dom";
+import { ApiPost } from "../dataInterfaces";
+import { ROUTER_POST } from "../utils/routes";
 import AuthorTag from "./AuthorTag";
 import Header from "./style-components/Header";
 import SectionContainer from "./style-components/SectionContainer";
@@ -7,14 +9,16 @@ import SectionContent from "./style-components/SectionContent";
 import Timestamp from "./Timestamp";
 
 export interface PostProps {
-  post: Post;
+  post: ApiPost;
 }
 
 const BlogPost = ({ post }: PostProps) => {
   console.log(post);
   return (
     <SectionContainer>
-      <Header text={post.title} />
+      <Link to={`${ROUTER_POST}/${post._id}`}>
+        <Header text={post.title} />
+      </Link>
       <SectionContent>{post.content}</SectionContent>
       <div className="w-full flex justify-between italic text-gray-500">
         <AuthorTag author={post.author} />

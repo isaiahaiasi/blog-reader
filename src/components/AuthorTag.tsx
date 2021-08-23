@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { User } from "../dataInterfaces";
+import { ApiUser } from "../dataInterfaces";
 import { ROUTER_USER_FEED_BASE } from "../utils/routes";
 
 interface AuthorTagProps {
-  author: User;
+  author: ApiUser;
   className?: string;
 }
 const AuthorTag = ({ author, className }: AuthorTagProps) => (

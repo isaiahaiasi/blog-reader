@@ -3,6 +3,17 @@ const path = require("path");
 
 module.exports = {
   entry: "./src/index.tsx",
+  output: {
+    path: path.resolve(__dirname, "./public"),
+    filename: "bundle.js",
+    publicPath: "/",
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: "index.html",
+      template: path.resolve(__dirname, "src/index.html"),
+    }),
+  ],
   devtool: "inline-source-map",
   target: "web",
   mode: "development",
@@ -37,23 +48,12 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, "src/index.html"),
-      // filename: "index.html",
-    }),
-  ],
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
   },
-  output: {
-    filename: "bundle.js",
-    path: path.resolve(__dirname, "public"),
-  },
   devServer: {
-    historyApiFallback: true,
-    devMiddleware: {
-      publicPath: "/",
+    historyApiFallback: {
+      verbose: true,
     },
   },
 };

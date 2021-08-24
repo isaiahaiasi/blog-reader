@@ -16,5 +16,5 @@ export interface ApiComment {
   _id: string;
   content: string;
   author: ApiUser;
-  iat: string; //! PLACEHOLDER; double check actual name
+  createdAt: string;
 }

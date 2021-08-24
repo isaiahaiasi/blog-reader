@@ -9,7 +9,7 @@ const Comment = ({ comment }: { comment: ApiComment }) => (
     <div>{comment.content}</div>
     <div className="w-full flex justify-between italic text-gray-500">
       <AuthorTag author={comment.author} />
-      <Timestamp date={comment.iat} />
+      <Timestamp date={comment.createdAt} />
     </div>
   </SectionContainer>
 );

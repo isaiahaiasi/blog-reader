@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import useFetch from "use-http";
 import { getPost, getPostComments } from "../../utils/routes";
+import AddCommentForm from "../AddCommentForm";
 import BlogPost from "../BlogPost";
 import CommentList from "../CommentList";
 import SectionContainer from "../style-components/SectionContainer";
@@ -44,6 +45,7 @@ const FullBlogPost = () => {
       <div className="comments-container">
         <SectionContainer>
           Comments: {getCommentCount(commentsData)}
+          <AddCommentForm />
         </SectionContainer>
         {commentsError && <div>error loading comments!</div>}
         {commentsLoading && <div>loading comments...</div>}

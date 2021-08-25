@@ -1,6 +1,7 @@
 import React, { FormEvent, useState } from "react";
 import useFetch from "use-http";
 import { API_REGISTER } from "../../utils/routes";
+import Error from "../Error";
 import Button from "../style-components/Button";
 import Header from "../style-components/Header";
 import Input from "../style-components/Input";
@@ -11,17 +12,12 @@ const RegistrationPage = () => {
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
 
-  const { post, response } = useFetch(API_REGISTER);
+  const { post, error } = useFetch(API_REGISTER);
 
   const handleFormSubmit = async (e: FormEvent) => {
     e.preventDefault();
     const body = { username, password, passwordConfirm };
     const postResponse = await post(body);
-
-    if (!response.ok) {
-      console.log("uh oh!");
-      // TODO: render errors
-    }
 
     console.log(postResponse);
     // TODO: redirect
@@ -60,6 +56,7 @@ const RegistrationPage = () => {
         />
         <Button type="submit">Log in</Button>
       </form>
+      {error && <Error error={error} />}
     </SectionContainer>
   );
 };

@@ -6,6 +6,7 @@ import { getPost, getPostComments } from "../../utils/routes";
 import AddCommentForm from "../AddCommentForm";
 import BlogPost from "../BlogPost";
 import CommentList from "../CommentList";
+import Error from "../Error";
 import Loading from "../Loading";
 import SectionContainer from "../style-components/SectionContainer";
 
@@ -40,12 +41,10 @@ const FullBlogPost = () => {
     setComments((prevComments) => [response, ...prevComments]);
   };
 
-  // TODO: replace error divs w actual Error component
-
   return (
     <div className="w-full max-w-prose">
       <div className="post-container">
-        {postError && <div>error loading post!</div>}
+        {postError && <Error message="Error loading post!" />}
         {postLoading && <Loading name="post" />}
         {postData && !postData.errors && <BlogPost post={postData} />}
       </div>
@@ -54,7 +53,7 @@ const FullBlogPost = () => {
           Comments: {comments?.length ?? "0"}
           <AddCommentForm onSubmitComment={refreshComments} />
         </SectionContainer>
-        {commentsError && <div>error loading comments!</div>}
+        {commentsError && <Error message="error loading comments!" />}
         {commentsLoading && <Loading name="comments" />}
         {comments && <CommentList comments={comments} />}
       </div>

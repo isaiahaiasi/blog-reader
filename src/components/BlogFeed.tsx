@@ -4,6 +4,7 @@ import React, { useContext } from "react";
 import useFetch from "use-http";
 import UserContext from "../contexts/UserContext";
 import BlogPost from "./BlogPost";
+import Error from "./Error";
 import Loading from "./Loading";
 
 interface BlogFeedProps {
@@ -21,13 +22,9 @@ const BlogFeed = ({ blogQuery }: BlogFeedProps) => {
     []
   );
 
-  console.log(data);
-
-  // TODO: replace error divs w actual Error component
-
   return (
     <>
-      {error && <p>Uh-oh! Was not able to load posts!</p>}
+      {error && <Error message="Oops! Couldn't load posts!" />}
       {loading && <Loading />}
       {data &&
         Array.isArray(data) &&

@@ -8,8 +8,6 @@ import SectionContainer from "../style-components/SectionContainer";
 import Input from "../style-components/Input";
 import Button from "../style-components/Button";
 
-// TODO: separate logic from JSX?
-
 const LoginPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");

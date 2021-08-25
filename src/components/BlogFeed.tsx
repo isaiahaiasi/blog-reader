@@ -1,11 +1,10 @@
 // Renders list of blog posts
-// TODO: not how to generalize this... pass in api url as prop?
-// TODO: confirm
 
 import React, { useContext } from "react";
 import useFetch from "use-http";
 import UserContext from "../contexts/UserContext";
 import BlogPost from "./BlogPost";
+import Loading from "./Loading";
 
 interface BlogFeedProps {
   blogQuery: string;
@@ -25,12 +24,11 @@ const BlogFeed = ({ blogQuery }: BlogFeedProps) => {
   console.log(data);
 
   // TODO: replace error divs w actual Error component
-  // TODO: replace loading divs w actual Loading component
 
   return (
     <>
       {error && <p>Uh-oh! Was not able to load posts!</p>}
-      {loading && <p>Loading...</p>}
+      {loading && <Loading />}
       {data &&
         Array.isArray(data) &&
         (data as Array<any>).map((post) => (

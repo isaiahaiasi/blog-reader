@@ -39,6 +39,7 @@ module.exports = {
     ],
     "no-underscore-dangle": ["error", { allow: ["_id"] }],
     "react/require-default-props": 0,
+    "no-console": 0,
   },
   ignorePatterns: [
     ".eslintrc.js",

@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useFetch from "use-http";
+import { ApiComment } from "../../utils/dataInterfaces";
 import { getPost, getPostComments } from "../../utils/routes";
 import AddCommentForm from "../AddCommentForm";
 import BlogPost from "../BlogPost";
@@ -9,6 +10,7 @@ import SectionContainer from "../style-components/SectionContainer";
 
 const FullBlogPost = () => {
   const { postid } = useParams<{ postid: string }>();
+  const [comments, setComments] = useState([]);
 
   // fetch post
   const {
@@ -19,17 +21,22 @@ const FullBlogPost = () => {
 
   // fetch comments
   const {
-    loading: commentsLoading,
     error: commentsError,
-    data: commentsData,
-  } = useFetch(getPostComments(postid), {}, []);
+    loading: commentsLoading,
+    get: getComments,
+  } = useFetch(getPostComments(postid), { data: [] });
 
-  const getCommentCount = (comments: any[]) => {
-    if (!comments || !Array.isArray(comments)) {
-      return "???";
-    }
+  useEffect(() => {
+    const updateComments = async () => {
+      const updatedComments = await getComments();
+      setComments(updatedComments);
+    };
 
-    return comments.length;
+    updateComments();
+  }, []);
+
+  const refreshComments = (response: ApiComment) => {
+    setComments((prevComments) => [response, ...prevComments]);
   };
 
   // TODO: replace error divs w actual Error component
@@ -44,12 +51,12 @@ const FullBlogPost = () => {
       </div>
       <div className="comments-container">
         <SectionContainer>
-          Comments: {getCommentCount(commentsData)}
-          <AddCommentForm />
+          Comments: {comments?.length ?? "0"}
+          <AddCommentForm onSubmitComment={refreshComments} />
         </SectionContainer>
         {commentsError && <div>error loading comments!</div>}
         {commentsLoading && <div>loading comments...</div>}
-        {commentsData && <CommentList comments={commentsData} />}
+        {comments && <CommentList comments={comments} />}
       </div>
     </div>
   );

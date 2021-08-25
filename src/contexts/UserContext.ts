@@ -1,6 +1,12 @@
 import React from "react";
+import { ApiUser } from "../utils/dataInterfaces";
 
-const UserContext: React.Context<[any, React.Dispatch<any>] | null> =
+interface UserData {
+  user: ApiUser;
+  token: string;
+}
+
+const UserContext: React.Context<[UserData, React.Dispatch<UserData>] | null> =
   React.createContext(null);
 
 export default UserContext;

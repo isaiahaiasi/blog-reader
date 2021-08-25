@@ -1,16 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
+import useInterval from "../hooks/useInterval";
 import SectionContainer from "./style-components/SectionContainer";
 
 interface LoadingProps {
   name?: string;
 }
 
-// TODO: animate "..." using useInterval
+const Loading = ({ name }: LoadingProps) => {
+  const [dotCount, setDotCount] = useState(0);
 
-const Loading = ({ name }: LoadingProps) => (
-  <SectionContainer>
-    {name ? `loading ${name}...` : "loading..."}
-  </SectionContainer>
-);
+  useInterval(() => {
+    setDotCount((prevCount) => prevCount + 1);
+  }, 500);
+
+  const getDots = () => ".".repeat((dotCount % 3) + 1);
+
+  return (
+    <SectionContainer>
+      {name ? `loading ${name}` : "loading"}
+      {getDots()}
+    </SectionContainer>
+  );
+};
 
 export default Loading;

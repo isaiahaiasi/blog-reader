@@ -17,6 +17,7 @@ import DiscoverFeed from "./pages/DiscoverFeed";
 import MyBlog from "./pages/MyBlog";
 import UserFeed from "./pages/UserFeed";
 import FullBlogPost from "./pages/FullBlogPost";
+import NotFoundPage from "./pages/NotFoundPage";
 
 const BlogRouter: FC = () => {
   const [user] = useContext(UserContext);
@@ -65,6 +66,9 @@ const BlogRouter: FC = () => {
           </Route>
           <Route exact path={`${ROUTER_POST}/:postid`}>
             <FullBlogPost />
+          </Route>
+          <Route>
+            <NotFoundPage />
           </Route>
         </Switch>
       </Main>

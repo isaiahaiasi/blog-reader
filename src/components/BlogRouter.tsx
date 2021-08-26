@@ -18,6 +18,7 @@ import MyBlog from "./pages/MyBlog";
 import UserFeed from "./pages/UserFeed";
 import FullBlogPost from "./pages/FullBlogPost";
 import NotFoundPage from "./pages/NotFoundPage";
+import DeleteItem from "./DeleteItem";
 
 const BlogRouter: FC = () => {
   const [user] = useContext(UserContext);
@@ -39,6 +40,7 @@ const BlogRouter: FC = () => {
           ]}
         />
       )}
+      <DeleteItem />
 
       <Main>
         <Switch>

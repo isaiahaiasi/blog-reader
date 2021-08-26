@@ -11,9 +11,13 @@ interface ButtonProps
   > {}
 
 const Button = (props: ButtonProps) => {
-  const { children, type } = props;
+  const { children, type, onClick } = props;
   return (
-    <button type={type} className="bg-blue-500 text-white relative p-2">
+    <button
+      type={type}
+      onClick={onClick}
+      className="bg-blue-500 text-white relative p-2"
+    >
       {children}
     </button>
   );

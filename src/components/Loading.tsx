@@ -1,26 +1,16 @@
-import React, { useState } from "react";
-import useInterval from "../hooks/useInterval";
+import React from "react";
+import AnimatedEllipses from "./AnimatedEllipses";
 import SectionContainer from "./style-components/SectionContainer";
 
 interface LoadingProps {
   name?: string;
 }
 
-const Loading = ({ name }: LoadingProps) => {
-  const [dotCount, setDotCount] = useState(0);
-
-  useInterval(() => {
-    setDotCount((prevCount) => prevCount + 1);
-  }, 500);
-
-  const getDots = () => ".".repeat((dotCount % 3) + 1);
-
-  return (
-    <SectionContainer>
-      {name ? `loading ${name}` : "loading"}
-      {getDots()}
-    </SectionContainer>
-  );
-};
+const Loading = ({ name }: LoadingProps) => (
+  <SectionContainer>
+    {name ? `loading ${name}` : "loading"}
+    <AnimatedEllipses intervalTime={300} />
+  </SectionContainer>
+);
 
 export default Loading;

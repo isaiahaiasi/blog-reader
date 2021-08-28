@@ -1,4 +1,5 @@
 import React, { FormEvent, useState } from "react";
+import { Redirect } from "react-router-dom";
 import useFetch from "use-http";
 import { API_REGISTER } from "../../utils/routes";
 import Error from "../Error";
@@ -11,16 +12,19 @@ const RegistrationPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
+  const [isRedirectActive, setIsRedirectActive] = useState(false);
 
-  const { post, error } = useFetch(API_REGISTER);
+  const { post, error, response } = useFetch(API_REGISTER);
 
   const handleFormSubmit = async (e: FormEvent) => {
     e.preventDefault();
     const body = { username, password, passwordConfirm };
     const postResponse = await post(body);
 
-    console.log(postResponse);
-    // TODO: redirect
+    if (response.ok && !error) {
+      console.log(postResponse);
+      setIsRedirectActive(true);
+    }
   };
 
   return (
@@ -57,6 +61,7 @@ const RegistrationPage = () => {
         <Button type="submit">Log in</Button>
       </form>
       {error && <Error error={error} />}
+      {isRedirectActive && <Redirect to="/login" />}
     </SectionContainer>
   );
 };

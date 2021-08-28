@@ -3,6 +3,7 @@
 import React, { useContext } from "react";
 import useFetch from "use-http";
 import UserContext from "../contexts/UserContext";
+import { tryGetAuthHeader } from "../utils/fetchHelpers";
 import BlogPost from "./BlogPost";
 import Error from "./Error";
 import Loading from "./Loading";
@@ -16,9 +17,7 @@ const BlogFeed = ({ blogQuery }: BlogFeedProps) => {
 
   const { loading, error, data } = useFetch(
     blogQuery,
-    userData?.token
-      ? { headers: { Authorization: `Bearer ${userData.token}` } }
-      : {},
+    { headers: tryGetAuthHeader(userData) },
     []
   );
 

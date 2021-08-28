@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import useFetch from "use-http";
 import UserContext from "../contexts/UserContext";
 import { ApiComment } from "../utils/dataInterfaces";
+import { tryGetAuthHeader } from "../utils/fetchHelpers";
 import { getPostComments } from "../utils/routes";
 import Button from "./style-components/Button";
 
@@ -14,12 +15,9 @@ const AddCommentForm = ({ onSubmitComment }: AddCommentFormProps) => {
   const { postid } = useParams<{ postid: string }>();
   const [userData] = useContext(UserContext);
 
-  const { post, response } = useFetch(
-    getPostComments(postid),
-    userData?.token
-      ? { headers: { Authorization: `Bearer ${userData.token}` } }
-      : {}
-  );
+  const { post, response } = useFetch(getPostComments(postid), {
+    headers: tryGetAuthHeader(userData),
+  });
 
   const [content, setContent] = useState("");
 

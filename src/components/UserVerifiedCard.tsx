@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import useFetch from "use-http";
 import UserContext from "../contexts/UserContext";
+import { tryGetAuthHeader } from "../utils/fetchHelpers";
 import { API_USER } from "../utils/routes";
 import Header from "./style-components/Header";
 import SectionContainer from "./style-components/SectionContainer";
@@ -20,9 +21,7 @@ const UserVerifiedCard = () => {
     data: user,
   } = useFetch(
     `${API_USER}/${userData?.user._id}`,
-    userData?.token
-      ? { headers: { Authorization: `Bearer ${userData.token}` } }
-      : {},
+    { headers: tryGetAuthHeader(userData) },
     []
   );
 

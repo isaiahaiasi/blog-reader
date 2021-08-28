@@ -16,6 +16,17 @@ A React-based front-end for reading microblogs. It is written in TypeScript, and
 - Ability to comment on interesting posts.
 - View general posts, your own posts, or another user's posts.
 
+## Learning Objectives
+
+- Learn how to compile a React app using Webpack directly, as opposed to using a bundling framework such as create-react-app.
+- Learn how to write a React app using TypeScript, as opposed to vanilla JS.
+- Learn how to consume a custom API on the front-end.
+- Learn how to handle sensitive client information, such as authentication tokens, in a secure way.
+- Learn TailwindCSS, a utility-driven CSS framework.
+- Learn how to handle complex routing using React-Router
+
+(Note: these objectives are for this portion of the project. This is a fairly large project, and I tried to bite off a lot on all fronts. Back-end focused objectives can be found in the Blog-Server README, and authoring focused objectives can be found in the Blog-Writer README)
+
 ## Why Split?
 
 The idea behind splitting the "Reader" client and the "Authoring" client was to practice creating an API that could be consumed by multiple different clients.

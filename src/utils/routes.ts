@@ -6,11 +6,13 @@ export const API_USER = `${API_ROOT}/user`;
 export const API_BLOGPOST = `${API_ROOT}/blog`;
 export const API_LOGIN = `${API_ROOT}/auth/login`;
 export const API_REGISTER = `${API_ROOT}/user`;
+export const API_COMMENT = `${API_ROOT}/comment`;
 
 export const getUserBlog = (userid: string) => `${API_USER}/${userid}/blog`;
 export const getPost = (blogid: string) => `${API_BLOGPOST}/${blogid}`;
 export const getPostComments = (blogid: string) =>
   `${API_BLOGPOST}/${blogid}/comment`;
+export const getComment = (commentid: string) => `${API_COMMENT}/${commentid}`;
 
 //* PAGE ROUTES
 export const ROUTER_USER_FEED_BASE = "/feed/user";

@@ -1,17 +1,23 @@
-import React, { EventHandler, useState } from "react";
+import React, { useState } from "react";
 import Modal from "./Modal";
 import Button from "./style-components/Button";
 
-interface DeleteItemProps {
-  onConfirm: EventHandler<any>; // TODO: type-ing is hard
+interface DeleteCommentInputProps {
+  onConfirm: (e?: any) => void;
 }
 
-const DeleteItem = ({ onConfirm }: DeleteItemProps) => {
+const DeleteCommentInput = ({ onConfirm }: DeleteCommentInputProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const toggleModal = () => {
     console.log("click");
     setIsModalOpen((prevModalState) => !prevModalState);
   };
+
+  const handleConfirm = () => {
+    toggleModal();
+    onConfirm();
+  };
+
   return (
     <div className="w-full max-w-prose m-auto flex justify-center">
       <Button onClick={toggleModal}>X</Button>
@@ -24,7 +30,7 @@ const DeleteItem = ({ onConfirm }: DeleteItemProps) => {
             <p>This action cannot be undone.</p>
             <div className="flex justify-around">
               <Modal.CloseButton>Cancel</Modal.CloseButton>
-              <Button onClick={onConfirm}>Delete</Button>
+              <Button onClick={handleConfirm}>Delete</Button>
             </div>
           </Modal.Body>
         </Modal>
@@ -33,4 +39,4 @@ const DeleteItem = ({ onConfirm }: DeleteItemProps) => {
   );
 };
 
-export default DeleteItem;
+export default DeleteCommentInput;

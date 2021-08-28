@@ -1,7 +1,7 @@
 import React from "react";
 import { ApiUser } from "../utils/dataInterfaces";
 
-interface UserData {
+export interface UserData {
   user: ApiUser;
   token: string;
 }

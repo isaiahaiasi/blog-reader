@@ -6,7 +6,10 @@ export interface UserData {
   token: string;
 }
 
-const UserContext: React.Context<[UserData, React.Dispatch<UserData>] | null> =
-  React.createContext(null);
+type NullableUserData = UserData | undefined;
+
+const UserContext: React.Context<
+  [NullableUserData, React.Dispatch<NullableUserData>] | null
+> = React.createContext(null);
 
 export default UserContext;

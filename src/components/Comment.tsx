@@ -33,7 +33,7 @@ const Comment = ({ comment }: { comment: ApiComment }) => {
   return (
     <SectionContainer>
       <div>{comment.content}</div>
-      {userData.user._id === comment.author._id && (
+      {userData?.user?._id === comment.author._id && (
         <div className="absolute top-0 right-0">
           <div className="overflow-hidden h-8 w-8">
             <DeleteCommentInput onConfirm={handleDeleteComment} />

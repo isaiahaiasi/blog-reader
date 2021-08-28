@@ -1,11 +1,18 @@
 import React, { FC, useEffect, useState } from "react";
 import BlogRouter from "./components/BlogRouter";
-import UserContext from "./contexts/UserContext";
+import UserContext, { UserData } from "./contexts/UserContext";
 
 const USER_KEY = "USER_INFO";
 
 const App: FC = () => {
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem(USER_KEY)));
+  const [user, setUser] = useState<UserData | undefined>();
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem(USER_KEY);
+    if (storedUser !== "undefined") {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
 
   useEffect(() => {
     localStorage.setItem(USER_KEY, JSON.stringify(user));

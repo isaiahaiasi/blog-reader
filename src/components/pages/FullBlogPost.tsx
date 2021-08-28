@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useFetch from "use-http";
+import UserContext from "../../contexts/UserContext";
 import { ApiComment } from "../../utils/dataInterfaces";
 import { getPost, getPostComments } from "../../utils/routes";
 import AddCommentForm from "../AddCommentForm";
@@ -13,6 +14,7 @@ import SectionContainer from "../style-components/SectionContainer";
 const FullBlogPost = () => {
   const { postid } = useParams<{ postid: string }>();
   const [comments, setComments] = useState([]);
+  const [userData] = useContext(UserContext);
 
   // fetch post
   const {
@@ -51,7 +53,9 @@ const FullBlogPost = () => {
       <div className="comments-container">
         <SectionContainer>
           Comments: {comments?.length ?? "0"}
-          <AddCommentForm onSubmitComment={refreshComments} />
+          {userData && userData.token && (
+            <AddCommentForm onSubmitComment={refreshComments} />
+          )}
         </SectionContainer>
         {commentsError && <Error message="error loading comments!" />}
         {commentsLoading && <Loading name="comments" />}

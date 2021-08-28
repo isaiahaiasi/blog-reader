@@ -18,6 +18,7 @@ import MyBlog from "./pages/MyBlog";
 import UserFeed from "./pages/UserFeed";
 import FullBlogPost from "./pages/FullBlogPost";
 import NotFoundPage from "./pages/NotFoundPage";
+import LogoutPage from "./pages/LogoutPage";
 
 const BlogRouter: FC = () => {
   const [user] = useContext(UserContext);
@@ -58,8 +59,7 @@ const BlogRouter: FC = () => {
             <MyBlog />
           </Route>
           <Route exact path="/logout">
-            {/* TODO: Replace w Logout component (should also redirect) */}
-            <LoginPage />
+            <LogoutPage />
           </Route>
           <Route exact path={`${ROUTER_USER_FEED_BASE}/:userid`}>
             <UserFeed />

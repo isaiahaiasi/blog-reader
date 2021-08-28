@@ -1,5 +1,7 @@
 import React, { FC, useEffect, useState } from "react";
 import BlogRouter from "./components/BlogRouter";
+import Footer from "./components/Footer";
+import GithubLink from "./components/GithubLink";
 import UserContext, { UserData } from "./contexts/UserContext";
 
 const USER_KEY = "USER_INFO";
@@ -20,8 +22,11 @@ const App: FC = () => {
 
   return (
     <UserContext.Provider value={[user, setUser]}>
-      <div className="text-xl text-gray-900">
+      <div className="h-full flex flex-col text-xl text-gray-900">
         <BlogRouter />
+        <Footer>
+          <GithubLink />
+        </Footer>
       </div>
     </UserContext.Provider>
   );

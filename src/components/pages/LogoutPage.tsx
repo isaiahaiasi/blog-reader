@@ -9,13 +9,15 @@ const LogoutPage = () => {
 
   // Handle delay for redirect
   const [isTimeoutComplete, setIsTimeoutComplete] = useState(false);
-  const timeoutTime = 6000; // in milliseconds
+  const timeoutTime = 3000; // in milliseconds
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setUserData(undefined);
 
       setIsTimeoutComplete(true);
     }, timeoutTime);
+
     return () => clearTimeout(timer);
   }, []);
 

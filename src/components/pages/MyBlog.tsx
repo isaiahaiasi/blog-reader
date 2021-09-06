@@ -13,7 +13,7 @@ const MyBlog: FC = () => {
       <SectionContainer>
         <Header text="My Blog" />
       </SectionContainer>
-      <BlogFeed blogQuery={getUserBlog(user?.user._id)} />
+      <BlogFeed blogQuery={getUserBlog(user?._id)} />
     </div>
   );
 };

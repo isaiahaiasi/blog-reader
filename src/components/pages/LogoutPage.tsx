@@ -30,9 +30,7 @@ const LogoutPage = () => {
           <AnimatedEllipses intervalTime={600} />
         </p>
       </SectionContainer>
-      {(isTimeoutComplete || !userData || !userData.token) && (
-        <Redirect to="/login" />
-      )}
+      {(isTimeoutComplete || !userData) && <Redirect to="/login" />}
     </div>
   );
 };

@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import useFetch from "use-http";
 import UserContext from "../contexts/UserContext";
-import { tryGetAuthHeader } from "../utils/fetchHelpers";
 import { API_USER } from "../utils/routes";
 import Header from "./style-components/Header";
 import SectionContainer from "./style-components/SectionContainer";
@@ -19,19 +18,14 @@ const UserVerifiedCard = () => {
     loading,
     error,
     data: user,
-  } = useFetch(
-    `${API_USER}/${userData?.user._id}`,
-    { headers: tryGetAuthHeader(userData) },
-    []
-  );
+  } = useFetch(`${API_USER}/${userData?._id}`, {}, []);
 
   return (
     <SectionContainer>
       <Header text="Verified User:" />
-      {userData?.user && (
+      {userData && (
         <SectionContent>
-          If {userData.user.username} is verified, their user card will appear
-          below:
+          If {userData.username} is verified, their user card will appear below:
         </SectionContent>
       )}
       {loading && <p>Loading user list...</p>}

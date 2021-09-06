@@ -1,10 +1,7 @@
 import React from "react";
 import { ApiUser } from "../utils/dataInterfaces";
 
-export interface UserData {
-  user: ApiUser;
-  token: string;
-}
+export type UserData = ApiUser;
 
 type NullableUserData = UserData | undefined;
 

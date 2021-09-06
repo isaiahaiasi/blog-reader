@@ -53,9 +53,7 @@ const FullBlogPost = () => {
       <div className="comments-container">
         <SectionContainer>
           Comments: {comments?.length ?? "0"}
-          {userData && userData.token && (
-            <AddCommentForm onSubmitComment={refreshComments} />
-          )}
+          {userData && <AddCommentForm onSubmitComment={refreshComments} />}
         </SectionContainer>
         {commentsError && <Error message="error loading comments!" />}
         {commentsLoading && <Loading name="comments" />}

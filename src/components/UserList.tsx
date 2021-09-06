@@ -1,20 +1,12 @@
-import React, { useContext } from "react";
+import React from "react";
 import useFetch from "use-http";
-import UserContext from "../contexts/UserContext";
-import { tryGetAuthHeader } from "../utils/fetchHelpers";
 import { API_USER } from "../utils/routes";
 import Header from "./style-components/Header";
 import SectionContainer from "./style-components/SectionContainer";
 import UserCard from "./style-components/UserCard";
 
 const UserList = () => {
-  const [userData] = useContext(UserContext);
-
-  const {
-    loading,
-    error,
-    data: users,
-  } = useFetch(API_USER, { headers: tryGetAuthHeader(userData) }, []);
+  const { loading, error, data: users } = useFetch(API_USER, {}, []);
 
   return (
     <SectionContainer>

@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom";
 import useFetch from "use-http";
 import UserContext from "../contexts/UserContext";
 import { ApiComment } from "../utils/dataInterfaces";
-import { tryGetAuthHeader } from "../utils/fetchHelpers";
 import { getComment } from "../utils/routes";
 import AuthorTag from "./AuthorTag";
 import DeleteCommentInput from "./DeleteItem";
@@ -14,9 +13,7 @@ const Comment = ({ comment }: { comment: ApiComment }) => {
   const [userData] = useContext(UserContext);
   const history = useHistory();
 
-  const { del, response } = useFetch(getComment(comment._id), {
-    headers: tryGetAuthHeader(userData),
-  });
+  const { del, response } = useFetch(getComment(comment._id), {});
 
   const handleDeleteComment = async () => {
     // fetch request to delete comment
@@ -33,7 +30,7 @@ const Comment = ({ comment }: { comment: ApiComment }) => {
   return (
     <SectionContainer>
       <div>{comment.content}</div>
-      {userData?.user?._id === comment.author._id && (
+      {userData?._id === comment.author._id && (
         <div className="absolute top-0 right-0">
           <div className="overflow-hidden h-8 w-8">
             <DeleteCommentInput onConfirm={handleDeleteComment} />

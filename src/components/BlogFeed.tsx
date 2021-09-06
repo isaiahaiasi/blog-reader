@@ -1,9 +1,7 @@
 // Renders list of blog posts
 
-import React, { useContext } from "react";
+import React from "react";
 import useFetch from "use-http";
-import UserContext from "../contexts/UserContext";
-import { tryGetAuthHeader } from "../utils/fetchHelpers";
 import BlogPost from "./BlogPost";
 import Error from "./Error";
 import Loading from "./Loading";
@@ -13,13 +11,7 @@ interface BlogFeedProps {
 }
 
 const BlogFeed = ({ blogQuery }: BlogFeedProps) => {
-  const [userData] = useContext(UserContext);
-
-  const { loading, error, data } = useFetch(
-    blogQuery,
-    { headers: tryGetAuthHeader(userData) },
-    []
-  );
+  const { loading, error, data } = useFetch(blogQuery, {}, []);
 
   return (
     <>

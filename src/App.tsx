@@ -10,14 +10,23 @@ const App: FC = () => {
   const [user, setUser] = useState<UserData | undefined>();
 
   useEffect(() => {
+    console.log("uE [] begin");
     const storedUser = localStorage.getItem(USER_KEY);
-    if (storedUser !== "undefined") {
+    if (typeof storedUser !== "undefined") {
+      console.log("uE [] NOT undefined, setting user FROM localStorage");
+      console.log("user:", storedUser);
       setUser(JSON.parse(storedUser));
     }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem(USER_KEY, JSON.stringify(user));
+    console.log("uE [user] begin");
+    if (user) {
+      localStorage.setItem(USER_KEY, JSON.stringify(user));
+      console.log("user is defined:", user);
+    } else {
+      console.log("user is undefined");
+    }
   }, [user]);
 
   return (

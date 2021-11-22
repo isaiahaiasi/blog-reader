@@ -1,7 +1,8 @@
-import { API_HOST_NAME } from "./constants";
+// eslint-disable-next-line import/prefer-default-export, prefer-destructuring
+export const PUBLIC_API_URL = process.env.PUBLIC_API_URL;
 
 //* API ROUTES
-const API_ROOT = `${API_HOST_NAME}/api`;
+const API_ROOT = `${PUBLIC_API_URL}/api`;
 export const API_USER = `${API_ROOT}/users`;
 export const API_BLOGPOST = `${API_ROOT}/blogs`;
 export const API_LOGIN = `${API_ROOT}/auth/login`;

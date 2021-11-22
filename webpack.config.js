@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const Dotenv = require("dotenv-webpack");
 const path = require("path");
 
 module.exports = {
@@ -13,6 +14,7 @@ module.exports = {
       filename: "index.html",
       template: path.resolve(__dirname, "src/index.html"),
     }),
+    new Dotenv(),
   ],
   devtool: "inline-source-map",
   target: "web",
@@ -55,5 +57,6 @@ module.exports = {
     historyApiFallback: {
       verbose: true,
     },
+    port: process.env.PORT ?? 8081,
   },
 };

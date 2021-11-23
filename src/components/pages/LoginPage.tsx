@@ -26,9 +26,17 @@ const LoginPage = () => {
 
     const postResult = await post(body);
 
-    if (response.ok && postResult?.user) {
-      console.log(postResult.user);
-      setUser(postResult.user);
+    if (!postResult?.success) {
+      if (postResult?.errors) {
+        (postResult.errors as Array<any>).forEach((err) =>
+          console.error(err.msg)
+        );
+      }
+    }
+
+    if (response.ok && postResult?.content) {
+      console.log(postResult.content);
+      setUser(postResult.content);
       history.push("/discover");
     } else {
       setUsername("");

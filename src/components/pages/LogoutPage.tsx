@@ -13,7 +13,7 @@ const LogoutPage = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setUserData(undefined);
+      setUserData(null);
 
       setIsTimeoutComplete(true);
     }, timeoutTime);

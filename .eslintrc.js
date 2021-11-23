@@ -44,7 +44,7 @@ module.exports = {
   ignorePatterns: [
     ".eslintrc.js",
     "postcss.config.js",
-    "webpack.config.js",
+    "webpack.*.js",
     "tailwind.config.js",
     "public",
   ],

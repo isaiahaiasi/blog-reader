@@ -1,6 +1,10 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const Dotenv = require("dotenv-webpack");
 const path = require("path");
+
+// I need this package for API_URL env variable,
+// but unfortunately it seems to break --mode flag
+// TODO: find fix for this (might be configuration option, but not clear to me)
+const Dotenv = require("dotenv-webpack");
 
 module.exports = {
   entry: "./src/index.tsx",
@@ -16,9 +20,7 @@ module.exports = {
     }),
     new Dotenv(),
   ],
-  devtool: "inline-source-map",
   target: "web",
-  mode: "development",
   module: {
     rules: [
       {
@@ -52,11 +54,5 @@ module.exports = {
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
-  },
-  devServer: {
-    historyApiFallback: {
-      verbose: true,
-    },
-    port: process.env.PORT ?? 8081,
   },
 };

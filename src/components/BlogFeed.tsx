@@ -17,9 +17,9 @@ const BlogFeed = ({ blogQuery }: BlogFeedProps) => {
     <>
       {error && <Error message="Oops! Couldn't load posts!" />}
       {loading && <Loading />}
-      {data &&
-        Array.isArray(data) &&
-        (data as Array<any>).map((post) => (
+      {data?.content &&
+        Array.isArray(data.content) &&
+        (data.content as Array<any>).map((post) => (
           <BlogPost post={post} key={post._id} />
         ))}
     </>

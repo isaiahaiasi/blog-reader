@@ -33,9 +33,9 @@ const AddCommentForm = ({ onSubmitComment }: AddCommentFormProps) => {
     console.log("submitting comment", comment);
     const postResult = await post(comment);
 
-    if (response.ok && postResult) {
+    if (response.ok && postResult?.content) {
       const newComment = {
-        ...postResult,
+        ...postResult.content,
         author: { username: userData.username },
       };
       onSubmitComment(newComment);

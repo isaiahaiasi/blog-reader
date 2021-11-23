@@ -33,7 +33,7 @@ const FullBlogPost = () => {
   useEffect(() => {
     const updateComments = async () => {
       const updatedComments = await getComments();
-      setComments(updatedComments);
+      setComments(updatedComments?.content);
     };
 
     updateComments();
@@ -48,7 +48,9 @@ const FullBlogPost = () => {
       <div className="post-container">
         {postError && <Error message="Error loading post!" />}
         {postLoading && <Loading name="post" />}
-        {postData && !postData.errors && <BlogPost post={postData} />}
+        {postData?.content && !postData.errors && (
+          <BlogPost post={postData.content} />
+        )}
       </div>
       <div className="comments-container">
         <SectionContainer>

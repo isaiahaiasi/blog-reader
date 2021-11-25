@@ -13,7 +13,9 @@ const Comment = ({ comment }: { comment: ApiComment }) => {
   const [userData] = useContext(UserContext);
   const history = useHistory();
 
-  const { del, response } = useFetch(getComment(comment._id), {});
+  const { del, response } = useFetch(getComment(comment._id), {
+    credentials: "include",
+  });
 
   const handleDeleteComment = async () => {
     // fetch request to delete comment

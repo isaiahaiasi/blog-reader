@@ -10,6 +10,7 @@ export const API_REGISTER = `${API_ROOT}/users`;
 export const API_COMMENT = `${API_ROOT}/comments`;
 
 export const getUserBlog = (userid: string) => `${API_USER}/${userid}/blogs`;
+export const getUserBlogAll = (userid: string) => `${getUserBlog(userid)}-all`;
 export const getPost = (blogid: string) => `${API_BLOGPOST}/${blogid}`;
 export const getPostComments = (blogid: string) =>
   `${API_BLOGPOST}/${blogid}/comments`;

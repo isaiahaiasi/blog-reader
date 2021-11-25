@@ -11,7 +11,11 @@ interface BlogFeedProps {
 }
 
 const BlogFeed = ({ blogQuery }: BlogFeedProps) => {
-  const { loading, error, data } = useFetch(blogQuery, {}, []);
+  const { loading, error, data } = useFetch(
+    blogQuery,
+    { credentials: "include" },
+    []
+  );
 
   return (
     <>

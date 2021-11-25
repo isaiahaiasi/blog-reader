@@ -1,6 +1,6 @@
 import React, { FC, useContext } from "react";
 import UserContext from "../../contexts/UserContext";
-import { getUserBlog } from "../../utils/routes";
+import { getUserBlogAll } from "../../utils/routes";
 import BlogFeed from "../BlogFeed";
 import Header from "../style-components/Header";
 import SectionContainer from "../style-components/SectionContainer";
@@ -13,7 +13,7 @@ const MyBlog: FC = () => {
       <SectionContainer>
         <Header text="My Blog" />
       </SectionContainer>
-      <BlogFeed blogQuery={getUserBlog(user?._id)} />
+      <BlogFeed blogQuery={getUserBlogAll(user?._id)} />
     </div>
   );
 };
